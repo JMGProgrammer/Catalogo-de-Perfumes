@@ -7,6 +7,7 @@ import Hero from "@/components/home/Hero";
 import CategoryGrid from "@/components/home/CategoryGrid";
 import TrendingCarousel from "@/components/home/TrendingCarrousel";
 import BrandsLogoGroup from "@/components/home/BrandsLogoGroup";
+import TeamSection from "@/components/home/TeamSection";
 import ProductDrawer from "@/components/product/ProductDrawer";
 import { trendingPerfumes } from "@/data/perfumes";
 import { Perfume } from "@/types";
@@ -25,6 +26,7 @@ export default function HomePage() {
           onOpenDrawer={setSelectedPerfume}
         />
         <BrandsLogoGroup />
+        <TeamSection />
       </main>
       <Footer />
       <ProductDrawer

@@ -8,6 +8,8 @@ const navLinks = [
   { label: "Diseñador", href: "/catalog?category=Diseñador" },
   { label: "Árabe", href: "/catalog?category=Árabe" },
   { label: "Colecciones", href: "/catalog" },
+  { label: "Ingredientes", href: "/ingredients" },
+  { label: "Guía Olfativa", href: "/guide" },
 ];
 
 export default function Navbar() {
@@ -38,18 +40,18 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="font-display text-2xl tracking-[0.15em] text-ink"
+          className="font-display text-2xl tracking-[0.15em] text-ink shrink-0"
         >
           SILLAGE
         </Link>
 
-        {/* Desktop links — centered absolutely */}
-        <div className="hidden md:flex gap-10 absolute left-1/2 -translate-x-1/2">
+        {/* Desktop links — centered */}
+        <div className="hidden lg:flex gap-8 absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="text-[0.7rem] font-medium tracking-[0.15em] uppercase text-stone hover:text-ink transition-colors duration-200"
+              className="text-[0.65rem] font-medium tracking-[0.15em] uppercase text-stone hover:text-ink transition-colors duration-200 whitespace-nowrap"
             >
               {link.label}
             </Link>
@@ -57,8 +59,7 @@ export default function Navbar() {
         </div>
 
         {/* Right icons */}
-        <div className="flex items-center gap-6">
-          {/* Search */}
+        <div className="flex items-center gap-5 shrink-0">
           <button
             aria-label="Buscar"
             className="text-ink/70 hover:text-ink transition-colors"
@@ -75,8 +76,6 @@ export default function Navbar() {
               <path d="m21 21-4.35-4.35" />
             </svg>
           </button>
-
-          {/* Cart */}
           <button
             aria-label="Carrito"
             className="relative text-ink/70 hover:text-ink transition-colors"
@@ -97,12 +96,10 @@ export default function Navbar() {
               0
             </span>
           </button>
-
-          {/* Mobile hamburger */}
           <button
             aria-label="Menú"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-ink"
+            className="lg:hidden text-ink"
           >
             <svg
               width="20"
@@ -128,13 +125,13 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="fixed top-[72px] inset-x-0 bottom-0 bg-white z-40 px-6 pt-12 flex flex-col gap-8 md:hidden">
+        <div className="fixed top-[72px] inset-x-0 bottom-0 bg-white z-40 px-6 pt-10 flex flex-col gap-6 lg:hidden overflow-y-auto">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="font-display text-4xl font-light text-ink"
+              className="font-display text-3xl font-light text-ink border-b border-mist pb-4"
             >
               {link.label}
             </Link>
