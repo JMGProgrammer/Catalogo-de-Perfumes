@@ -1,3 +1,4 @@
+// Tipos de unión — útiles como referencia pero no forzados en FilterState
 export type OlfactiveFamily =
   | "Floral"
   | "Oriental"
@@ -24,36 +25,45 @@ export interface PerfumeSize {
   inStock: boolean;
 }
 
+// Perfume con campos en snake_case (tal como llega de Supabase)
 export interface Perfume {
   id: string;
   name: string;
   brand: string;
-  category: PerfumeCategory;
-  olfactiveFamily: OlfactiveFamily;
-  concentration: Concentration;
-  gender: Gender;
+  category: string;
+  olfactive_family: string;
+  olfactiveFamily?: string; // alias camelCase para compatibilidad con datos locales
+  concentration: string;
+  gender: string;
   sizes: PerfumeSize[];
   rating: number;
-  reviewCount: number;
+  review_count?: number;
+  reviewCount?: number;
   description: string;
-  topNotes: string[];
-  heartNotes: string[];
-  baseNotes: string[];
+  top_notes?: string[];
+  heart_notes?: string[];
+  base_notes?: string[];
+  topNotes?: string[];
+  heartNotes?: string[];
+  baseNotes?: string[];
   ingredients: string[];
   perfumer: string;
   year: number;
-  imageUrl: string;
-  imageAlt: string;
+  image_url?: string;
+  imageUrl?: string;
+  imageAlt?: string;
   featured?: boolean;
   trending?: boolean;
+  created_at?: string;
 }
 
+// FilterState usa string[] para no pelear con los tipos estrictos
 export interface FilterState {
-  categories: PerfumeCategory[];
+  categories: string[];
   brands: string[];
-  genders: Gender[];
-  concentrations: Concentration[];
-  olfactiveFamilies: OlfactiveFamily[];
+  genders: string[];
+  concentrations: string[];
+  olfactiveFamilies: string[];
   priceRange: [number, number];
   ingredients: string[];
 }
